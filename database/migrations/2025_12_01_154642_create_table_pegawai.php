@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+        Schema::create('rizen_535196_pegawai', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pekerjaan_id')->constrained('pekerjaan')->cascadeOnDelete();
             $table->string('nama');
@@ -19,8 +19,17 @@ return new class extends Migration
             $table->enum('gender', ['male','female']);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
+
+        // Schema::create('rizen_535196_pegawai', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nama');
+        //     $table->timestamps();
+        // });
+
     }
+    
 
     /**
      * Reverse the migrations.
