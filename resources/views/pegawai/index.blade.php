@@ -24,7 +24,7 @@
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Nama Pegawai</th>
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Nama Pekerjaan</th>
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
-                        <th class="px-4 py-3 text-center font-semibold text-gray-700" width="1"></th>
+                        <th class="px-4 py-3 text-center font-semibold text-gray-700" width="1">Aksi</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 bg-white">
