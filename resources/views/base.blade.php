@@ -70,12 +70,28 @@
                     <a href="{{ route('pekerjaan.index') }}" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupekerjaan')">Pekerjaan</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupegawai')">Pegawai</a>
+                    <a href="{{ route('pegawai.index') }}" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupegawai')">Pegawai</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+@if(session('success'))
+    <div class="max-w-screen-xl mx-auto mt-4 px-4">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="max-w-screen-xl mx-auto mt-4 px-4">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{ session('error') }}</span>
+        </div>
+    </div>
+@endif
 
 @yield('content')
 

@@ -24,16 +24,16 @@
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Nama Pekerjaan</th>
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Deskripsi</th>
                         <th class="px-4 py-3 text-left font-semibold text-gray-700">Jumlah Pegawai</th>
-                        <th class="px-4 py-3 text-center font-semibold text-gray-700" width="1"></th>
+                        <th class="px-4 py-3 text-center font-semibold text-gray-700" width="1">Aksi</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 bg-white">
-                        @forelse($data as $k => $d)
+                        @forelse($data as $index => $d)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3">{{ $k+1 }}</td>
+                            <td class="px-4 py-3">{{ $data->firstItem() + $index }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900">{{ $d->nama }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->deskripsi }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ 100 }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ $d->pegawai_count }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">
                                 <div class="inline-flex rounded-md shadow-sm" role="group">
                                     <a href="{{ route('pekerjaan.edit', ['id' => $d->id]) }}" class="cursor-pointer rounded-l-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50">
@@ -42,7 +42,7 @@
                                     <form action="{{ route('pekerjaan.destroy', ['id' => $d->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="cursor-pointer rounded-r-md border border-l-0 border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50">
+                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="cursor-pointer rounded-r-md border border-l-0 border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50">
                                             Delete
                                         </button>
                                     </form>
@@ -50,12 +50,18 @@
                             </td>
                         </tr>
                         @empty
-                        kosong
+                        <tr>
+                            <td colspan="5" class="px-4 py-8 text-center text-gray-500">Tidak ada data pekerjaan</td>
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
-
+            
+            <!-- Pagination Links -->
+            <div class="mt-4">
+                {{ $data->links() }}
+            </div>
         </div>
     </section>
 @endsection
