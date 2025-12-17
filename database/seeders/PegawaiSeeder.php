@@ -16,7 +16,7 @@ class PegawaiSeeder extends Seeder
 
         for ($i = 0; $i < $totalPegawai; $i++) {
             $gender = $faker->randomElement(['male', 'female']);
-            DB::table('rizen-535196-pegawai')->insert([
+            DB::table('rizen_535196_pegawai')->insert([
                 'pekerjaan_id' => $faker->randomElement($pekerjaanIds),
                 'nama' => $gender === 'male' ? $faker->firstNameMale().' '.$faker->lastName() : $faker->firstNameFemale().' '.$faker->lastName(),
                 'email' => $faker->unique()->safeEmail(),
